@@ -418,7 +418,7 @@ namespace SystemHeat
           {
             if (CoolingEnabled)
             {
-              if (heatModule.LoopTemperature <= GetMaxSourceTemperature())
+              if (heatModule.LoopTemperature <= GetMaxSourceTemperature() + 1.0 ) // Add a 1 kelvin tolerance to boiloff to remove floating point issues 
               {
                 BoiloffStatus = Localizer.Format("#LOC_SystemHeat_ModuleSystemHeatCryoTank_Field_BoiloffStatus_Insulated");
                 CoolingStatus = Localizer.Format("#LOC_SystemHeat_ModuleSystemHeatCryoTank_Field_CoolingStatus_Cooling", finalCoolingHeatCost.ToString("F2"));
